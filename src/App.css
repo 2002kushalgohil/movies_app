@@ -1,5 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --color: #4154f1;
+  --title-size: 1.2rem;
+  --hover-color: #131ece;
+  --other-color: #444444;
+  --notFound-image: 200px;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #4154f1;
+}
+
+::selection {
+  color: #fff;
+  background: #4154f1;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color);
+}
+
+#navBar {
+  height: 70px;
+  background-color: #fff;
+  box-shadow: 0px 0px 58px -23px var(--hover-color);
+  -webkit-box-shadow: 0px 0px 58px -23px var(--hover-color);
+  -moz-box-shadow: 0px 0px 58px -23px var(--hover-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  padding: 5px;
+  border: 2px solid var(--color);
+  border-radius: 5px;
+}
+
+input {
+  padding: 3px;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  font-weight: 600;
+}
+
+button {
+  background-color: var(--color);
+  height: 32px;
+  cursor: pointer;
+  border: none;
+  font-size: var(--font-size-paragraph-sm);
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+}
+
+button:hover {
+  transition: 0.2s ease-in-out;
+  background-color: var(--hover-color);
+}
+
+::placeholder {
+  font-size: 1rem;
+  font-family: "poppins", sans-serif;
+}
+
+#cardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.card {
+  margin: 10px;
+  color: var(--color);
+  border: 2px solid;
+  position: relative;
+}
+
+.card:hover {
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 0px 58px -20px var(--hover-color);
+  -webkit-box-shadow: 0px 0px 58px -20px var(--hover-color);
+  -moz-box-shadow: 0px 0px 58px -20px var(--hover-color);
+}
+
+.cardImage img,
+.cardInfo {
+  width: 300px;
+}
+
+.cardInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardInfoVote {
+  border: 2px solid var(--color);
+  min-width: 40px;
+  text-align: center;
+  margin: 5px;
+}
+
+.cardInfoTitle,
+.cardInfoVote {
+  padding: 7px;
+  font-weight: 500;
+}
+.cardInfoTitle {
+  font-size: var(--title-size);
+}
+
+.card:hover .cardHiddenInfo {
+  opacity: 1;
+}
+
+.cardHiddenInfo {
+  position: absolute;
+  opacity: 0;
+  background-color: #fff;
+  overflow: scroll;
+  bottom: 0;
+  max-height: 100%;
+  color: var(--other-color);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.78);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.cardHiddenInfoHeading {
+  color: var(--color);
+  font-size: var(--title-size);
+}
+
+.cardHiddenInfo * {
+  padding: 5px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.notFound {
+  position: relative;
+  height: 93vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFoundHeading{
+  color: var(--color);
+}
+
+.not {
+  position: absolute;
+  width: var(--notFound-image);
+}
+
+.gif1 {
+  bottom: 0;
+  right: 0;
+}
+
+.gif2 {
+  top: 0;
+  left: 0;
 }
