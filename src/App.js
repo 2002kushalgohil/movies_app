@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import notFound from "./assets/notFound.gif";
-import gif1 from "./assets/404gif1.gif";
-import gif2 from "./assets/404gif2.gif";
+import NavBar from "./Components/NavBar";
+import NotFound from "./Components/NotFound";
+
+import Card from "./Components/Card";
+
 function App() {
   const featured = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=5382c539ec8faa8eab75274e3030f3f2`;
-  const images = `https://image.tmdb.org/t/p/w1280`;
+
   const searched = `https://api.themoviedb.org/3/search/movie?&api_key=5382c539ec8faa8eab75274e3030f3f2&query=`;
 
   const [userData, setUserData] = useState([]);
@@ -36,54 +38,22 @@ function App() {
   if (userData.length === 0) {
     return (
       <>
-        <div id="navBar">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <input
-              type="text"
-              value={userInput}
-              onChange={inputHandler}
-              placeholder="Search Movie"
-            />
-
-            <button type="submit" onClick={submitHandler}>
-              Go
-            </button>
-          </form>
-        </div>
-        <div id="home">
-          <div className="notFound">
-            <img className="not gif1" src={gif1} alt="images" />
-            <h1 className="notFoundHeading">404 Not Found</h1>
-            <img className="not gif2" src={gif2} alt="images" />
-          </div>
-        </div>
+        <NavBar
+          userInput={userInput}
+          inputHandler={inputHandler}
+          submitHandler={submitHandler}
+        />
+        <NotFound />
       </>
     );
   } else {
     return (
       <>
-        <div id="navBar">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <input
-              type="text"
-              value={userInput}
-              onChange={inputHandler}
-              placeholder="Search Movie"
-            />
-
-            <button type="submit" onClick={submitHandler}>
-              Go
-            </button>
-          </form>
-        </div>
+        <NavBar
+          userInput={userInput}
+          inputHandler={inputHandler}
+          submitHandler={submitHandler}
+        />
         <div id="home">
           <div id="cardContainer">
             {userData.map((value) => {
@@ -96,41 +66,14 @@ function App() {
                 vote_average,
               } = value;
               return (
-                <div key={id} className="card">
-                  <div className="cardHiddenInfo">
-                    <div>
-                      <p className="cardHiddenInfoHeading">Overview:- </p>
-                      <p>{overview} </p>
-                    </div>
-
-                    <div>
-                      <p className="cardHiddenInfoHeading">Release Date:- </p>
-                      <p>{release_date} </p>
-                    </div>
-                  </div>
-
-                  <div className="cardImage">
-                    <img
-                      alt="images"
-                      src={
-                        poster_path != null ? images + poster_path : notFound
-                      }
-                    />
-                  </div>
-
-                  <div className="cardInfo">
-                    <p className="cardInfoTitle">{title}</p>
-                    <p
-                      className={
-                        vote_average < 5
-                          ? "cardInfoVote red"
-                          : "cardInfoVote green"
-                      }
-                    >
-                      {vote_average}
-                    </p>
-                  </div>
-                </div>
+                <Card
+                  key={id}
+                  overview={overview}
+                  release_date={release_date}
+                  poster_path={poster_path}
+                  title={title}
+                  vote_average={vote_average}
+                />
               );
             })}
           </div>
